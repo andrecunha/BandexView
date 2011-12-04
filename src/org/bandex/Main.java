@@ -64,7 +64,7 @@ public class Main extends HttpServlet {
 
 			// TODO: Ver como tratar isso aqui.
 			StreamSource source = new StreamSource(
-					"file:///home/andre/workspace/WebTests/WebContent/restaurante.xsd");
+					"file:///home/andre/workspace/BandexView/WebContent/restaurante.xsd");
 			factory.setSchema(schemaFactory.newSchema(new Source[] { source }));
 
 			SAXParser parser = factory.newSAXParser();
@@ -72,8 +72,8 @@ public class Main extends HttpServlet {
 			XMLReader reader = parser.getXMLReader();
 			// reader.setErrorHandler(null);
 
-			// reader.parse("http://www.pcasc.usp.br/restaurante.xml");
-			reader.parse("file:///home/andre/workspace/WebTests/WebContent/NVMonitorLog11012239.xml");
+			reader.parse("http://www.pcasc.usp.br/restaurante.xml");
+			//reader.parse("file:///home/andre/workspace/BandexView/WebContent/NVMonitorLog11012239.xml");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace(out);
@@ -85,9 +85,8 @@ public class Main extends HttpServlet {
 		try {
 
 			TransformerFactory tFactory = TransformerFactory.newInstance();
-
 			StreamSource XSLSource = new StreamSource(
-					"file:///home/andre/workspace/WebTests/WebContent/restaurante.xsl");
+					"file:///home/andre/workspace/BandexView/WebContent/restaurante.xsl");
 			Transformer transformer = tFactory.newTransformer(XSLSource);
 
 			StreamSource XMLSource = new StreamSource(
@@ -114,7 +113,7 @@ public class Main extends HttpServlet {
 	            // Setup input and output files
 	            //File xmlfile = new File(baseDir, "xml/xml/projectteam.xml");
 	            URL xmlfile = new URL("http://www.pcasc.usp.br/restaurante.xml");
-	            File xsltfile = new File(baseDir, "workspace/WebTests/WebContent/restaurante-fo.xsl");
+	            File xsltfile = new File(baseDir, "workspace/BandexView/WebContent/restaurante-fo.xsl");
 	            File pdffile = new File(outDir, "ResultXML2PDF.pdf");
 
 	            System.out.println("Input: XML (" + xmlfile + ")");
@@ -173,6 +172,8 @@ public class Main extends HttpServlet {
 		toHTML(out);
 		//toPDF();
 		out.close();
+		String s = request.getParameter("all");
+		System.out.println(s);
 	}
 
 	/**
