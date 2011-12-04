@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+    <!-- é necessário? xmlns:rest="http://www.pcasc.usp.br/restaurante" -->
+	<xsd:simpleType name="typeDate">
+		<xsd:restriction base="xsd:string">
+            <!-- (whitespaces)* dd/mm/yyyy (whitespaces)* -->
+            <!-- alterei pra o mínimo de espaços e funciona com o xml da internet -->
+			<xsd:pattern value="(\s)\d{2}/\d{2}/\d{4}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:group name="nonEmptyMeal">
+		<xsd:sequence>
+			<xsd:element name="salada" type="xsd:string" />
+			<xsd:element name="principal" type="xsd:string" />
+			<xsd:element name="acompanhamento" type="xsd:string" />
+			<xsd:element name="sobremesa" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:group>
+
+	<xsd:complexType name="meal">
+		<xsd:choice>
+			<xsd:element name="vazio" fixed="" />
+			<xsd:group ref="nonEmptyMeal"/>
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:complexType name="weekDayMenu">
+		<xsd:sequence>
+			<xsd:element name="data" type="typeDate" />
+			<xsd:element name="almoco" type="meal" />
+			<xsd:element name="jantar" type="meal" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="restaurantType">
+		<xsd:sequence>
+			<xsd:element name="segunda" type="weekDayMenu" />
+			<xsd:element name="terca" type="weekDayMenu" />
+			<xsd:element name="quarta" type="weekDayMenu" />
+			<xsd:element name="quinta" type="weekDayMenu" />
+			<xsd:element name="sexta" type="weekDayMenu" />
+			<xsd:element name="sabado" type="weekDayMenu" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="restaurante" type="restaurantType" />
+
+</xsd:schema>
