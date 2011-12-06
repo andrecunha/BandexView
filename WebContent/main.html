@@ -6,18 +6,18 @@
 	id="docstyle" />
 <script type="text/javascript">
 	/* TODO: Ver como deixar estática. */
-	var all = "true";
+	choice = {"all":"true"};
 	loadHTML = function() {
-		window.open("cardapio.html?all="+all);
+		window.open("cardapio.html?all="+choice.all);
 	};
 	loadPDF = function() {
-		window.open("cardapio.pdf?all="+all);
+		window.open("cardapio.pdf?all="+choice.all);
 	};
 	setAll = function() {
-		all = "true";
+		choice.all = "true";
 	};
 	unsetAll = function() {
-		all = "false";
+		choice.all = "false";
 	};
 </script>
 <title>BandexView</title>

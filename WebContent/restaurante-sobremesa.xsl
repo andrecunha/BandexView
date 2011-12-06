@@ -34,11 +34,7 @@
 					#resize-packages-nav {
 					border-bottom: 3px solid #666;
 					}</style>
-				<script type="text/javascript">none = "";
-					android = "styles/android.css";
-					changeStyle = function(style) {
-					document.getElementById("docstyle").setAttribute("href", style);
-					}</script>
+				<script type="text/javascript" src="changeStyle.js"/>
 			</head>
 			<body>
 				<header>
@@ -52,6 +48,11 @@
 						<li id="androidStyle" onclick="changeStyle(android)">
 							<a ref="index.html">
 								<span class="en" style="display: inline">Android</span>
+							</a>
+						</li>
+						<li id="atmosphereStyle" onclick="changeStyle(atmosphere)">
+							<a ref="index.html">
+								<span class="en" style="display: inline">Atmosphere</span>
 							</a>
 						</li>
 					</ul>
