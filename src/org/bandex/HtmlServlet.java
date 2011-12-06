@@ -62,17 +62,27 @@ public class HtmlServlet extends HttpServlet {
 		}
 	}
 
-	public void toHTML(PrintWriter out, boolean all) {
+	public void toHTML(PrintWriter out, boolean all, boolean mobile) {
 		try {
 
 			TransformerFactory tFactory = TransformerFactory.newInstance();
 			StreamSource XSLSource;
 			if (all) {
-				XSLSource = new StreamSource(
-						"file:///home/andre/workspace/BandexView/WebContent/restaurante-tudo.xsl");
+				if (mobile){
+					XSLSource = new StreamSource(
+							"file:///home/andre/workspace/BandexView/WebContent/restaurante-tudo-mobile.xsl");
+				}else{
+					XSLSource = new StreamSource(
+							"file:///home/andre/workspace/BandexView/WebContent/restaurante-tudo.xsl");
+				}
 			} else {
-				XSLSource = new StreamSource(
-						"file:///home/andre/workspace/BandexView/WebContent/restaurante-sobremesa.xsl");
+				if (mobile){
+					XSLSource = new StreamSource(
+							"file:///home/andre/workspace/BandexView/WebContent/restaurante-sobremesa-mobile.xsl");
+				}else{
+					XSLSource = new StreamSource(
+							"file:///home/andre/workspace/BandexView/WebContent/restaurante-sobremesa.xsl");
+				}
 			}
 			Transformer transformer = tFactory.newTransformer(XSLSource);
 
@@ -99,12 +109,13 @@ public class HtmlServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String all = request.getParameter("all");
+		boolean mobile = Detector.isMobileBrowser(request);
 		if (all == null)
-			toHTML(out, true);
+			toHTML(out, true, mobile);
 		else if (all.compareTo("true") == 0)
-			toHTML(out, true);
+			toHTML(out, true, mobile);
 		else
-			toHTML(out, false);
+			toHTML(out, false, mobile);
 		out.close();
 	}
 

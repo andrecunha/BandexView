@@ -25,15 +25,6 @@ public class IndexServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	protected static boolean isMobileBrowser(HttpServletRequest request) {
-		String userAgent = request.getHeader("user-agent");
-		if (userAgent.matches(".*Android.*") || userAgent.matches(".*iPhone.*")
-				|| userAgent.matches(".*iPad.*"))
-			return true;
-
-		return false;
-	}
     
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +32,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		OutputStream out = response.getOutputStream();
 		FileInputStream fis;
-		if (isMobileBrowser(request))
+		if (Detector.isMobileBrowser(request))
 			fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main-mobile.html");
 		else
 			fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main.html");
