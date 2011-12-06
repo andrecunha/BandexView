@@ -1,10 +1,11 @@
 package org.bandex;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,36 +40,25 @@ public class PdfServlet extends HttpServlet {
 
 	protected void toPDF(OutputStream out, boolean all) {
 		try {
-			System.out.println("Preparing...");
-
 			// Setup input and output files
 			URL xmlfile = new URL("http://www.pcasc.usp.br/restaurante.xml");
-			/*URL xmlfile = new URL(
-					"file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
-			*/
-			File xsltfile;
-			if (all) {
-				xsltfile = new File(
-						"/home/andre/workspace/BandexView/WebContent/restaurante-fo-tudo.xsl");
-			} else {
-				xsltfile = new File(
-						"/home/andre/workspace/BandexView/WebContent/restaurante-fo-sobremesa.xsl");
-			}
+			
+			String xsltfile;
+			if (all)
+				xsltfile = "/restaurante-fo-tudo.xsl";
+			else
+				xsltfile = "/restaurante-fo-sobremesa.xsl";
 
-			System.out.println("Input: XML (" + xmlfile + ")");
-			System.out.println("Stylesheet: " + xsltfile);
-			System.out.println();
-			System.out.println("Transforming...");
+			ServletContext context = getServletContext();
+
+			InputStream is = context.getResourceAsStream(xsltfile);
+
+			StreamSource XSLTSource = new StreamSource(is);
 
 			// configure fopFactory as desired
 			FopFactory fopFactory = FopFactory.newInstance();
 
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-			// configure foUserAgent as desired
-
-			// Setup output
-			// OutputStream out = new java.io.FileOutputStream(pdffile);
-			// out = new java.io.BufferedOutputStream(out);
 
 			try {
 				// Construct fop with desired output format
@@ -78,7 +68,7 @@ public class PdfServlet extends HttpServlet {
 				// Setup XSLT
 				TransformerFactory factory = TransformerFactory.newInstance();
 				Transformer transformer = factory
-						.newTransformer(new StreamSource(xsltfile));
+						.newTransformer(XSLTSource);
 
 				// Set the value of a <param> in the stylesheet
 				// transformer.setParameter("versionParam", "2.0");
@@ -95,8 +85,6 @@ public class PdfServlet extends HttpServlet {
 			} finally {
 				out.close();
 			}
-
-			System.out.println("Success!");
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 		}

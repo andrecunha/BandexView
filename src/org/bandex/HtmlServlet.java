@@ -1,8 +1,10 @@
 package org.bandex;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,16 +38,21 @@ public class HtmlServlet extends HttpServlet {
 	protected boolean isValid(PrintWriter out) {
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
-			factory.setValidating(false);
+			factory.setValidating(true);
 			factory.setNamespaceAware(true);
 
 			SchemaFactory schemaFactory = SchemaFactory
 					.newInstance("http://www.w3.org/2001/XMLSchema");
 			schemaFactory.setErrorHandler(new SimpleErrorHandler(out));
 
-			// TODO: Ver como tratar isso aqui.
-			StreamSource source = new StreamSource(
-					"file:///home/andre/workspace/BandexView/WebContent/restaurante.xsd");
+			String xsdfile = "/restaurante.xsd";
+
+			ServletContext context = getServletContext();
+
+			InputStream is = context.getResourceAsStream(xsdfile);
+
+			StreamSource source = new StreamSource(is);
+
 			factory.setSchema(schemaFactory.newSchema(new Source[] { source }));
 
 			SAXParser parser = factory.newSAXParser();
@@ -54,7 +61,7 @@ public class HtmlServlet extends HttpServlet {
 			// reader.setErrorHandler(null);
 
 			reader.parse("http://www.pcasc.usp.br/restaurante.xml");
-			//reader.parse("file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
+			// reader.parse("file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace(out);
@@ -67,31 +74,29 @@ public class HtmlServlet extends HttpServlet {
 
 			TransformerFactory tFactory = TransformerFactory.newInstance();
 			StreamSource XSLSource;
+			String xslfile;
 			if (all) {
-				if (mobile){
-					XSLSource = new StreamSource(
-							"file:///home/andre/workspace/BandexView/WebContent/restaurante-tudo-mobile.xsl");
-				}else{
-					XSLSource = new StreamSource(
-							"file:///home/andre/workspace/BandexView/WebContent/restaurante-tudo.xsl");
-				}
+				if (mobile)
+					xslfile = "/restaurante-tudo-mobile.xsl";
+				else
+					xslfile = "/restaurante-tudo.xsl";
 			} else {
-				if (mobile){
-					XSLSource = new StreamSource(
-							"file:///home/andre/workspace/BandexView/WebContent/restaurante-sobremesa-mobile.xsl");
-				}else{
-					XSLSource = new StreamSource(
-							"file:///home/andre/workspace/BandexView/WebContent/restaurante-sobremesa.xsl");
-				}
+				if (mobile)
+					xslfile = "/restaurante-sobremesa-mobile.xsl";
+				else
+					xslfile = "/restaurante-sobremesa.xsl";
 			}
+
+			ServletContext context = getServletContext();
+
+			InputStream is = context.getResourceAsStream(xslfile);
+
+			XSLSource = new StreamSource(is);
+
 			Transformer transformer = tFactory.newTransformer(XSLSource);
 
-			
 			StreamSource XMLSource = new StreamSource(
-			  "http://www.pcasc.usp.br/restaurante.xml");
-			 
-			//StreamSource XMLSource = new StreamSource(
-			//		"file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
+					"http://www.pcasc.usp.br/restaurante.xml");
 
 			StreamResult result = new StreamResult(out);
 
