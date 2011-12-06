@@ -1,10 +1,9 @@
 body {
-	font-family: arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	color: #000;
-	font-size: 13px;
+	font-size: 12px;
 	color: #333;
-	background-image: url(../images/bg_fade.jpg);
-	background-repeat: repeat-x;
+	background: url(../images/bg_fade.jpg) repeat-x left top;
 }
 #title {
 	color: #94B922;
