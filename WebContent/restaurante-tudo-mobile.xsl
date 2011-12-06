@@ -10,7 +10,7 @@
 		<html>
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-				<link href="styles/greenzap.css" rel="stylesheet" type="text/css"
+				<link href="styles/android-mobile.css" rel="stylesheet" type="text/css"
 					id="docstyle" />
 				<meta name="viewport" content="width=device-width, user-scalable=no" />
 				<title>Cardápio do Bandejão</title>
@@ -43,22 +43,22 @@
 					<ul class="home">
 						<li id="noStyle" onclick="changeStyle(none)">
 							<a ref="index.html">
-								<span class="en" style="display: inline">Sem estilo</span>
+								<span class="en" style="display: inline">Sem estilo |</span>
 							</a>
 						</li>
 						<li id="androidStyle" onclick="changeStyle(android)">
 							<a ref="index.html">
-								<span class="en" style="display: inline">Android</span>
+								<span class="en" style="display: inline"> Android |</span>
 							</a>
 						</li>
 						<li id="atmosphereStyle" onclick="changeStyle(atmosphere)">
 							<a ref="index.html">
-								<span class="en" style="display: inline">Atmosphere</span>
+								<span class="en" style="display: inline"> Atmosphere |</span>
 							</a>
 						</li>
 						<li id="greenZapStyle" onclick="changeStyle(greenZap)">
 							<a ref="index.html">
-								<span class="en" style="display: inline">GreenZap</span>
+								<span class="en" style="display: inline"> GreenZap</span>
 							</a>
 						</li>
 					</ul>
