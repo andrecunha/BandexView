@@ -2,11 +2,71 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>BandexView</display-name>
   <welcome-file-list>
+  	<welcome-file>main.html</welcome-file>
+  	<welcome-file>main-mobile.html</welcome-file>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <display-name>
+  	BandexView
+  </display-name>
+  
+  <description>
+  	Este é um aplicativo desenvolvido para exibir o cardápio do Bandejão da USP-São Carlos.
+  </description>
+  
+  <servlet>
+  	<servlet-name>
+  		IndexServlet
+  	</servlet-name>
+  	<servlet-class>
+  		org.bandex.IndexServlet
+  	</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>
+  		HtmlServlet
+  	</servlet-name>
+  	<servlet-class>
+  		org.bandex.HtmlServlet
+  	</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>
+  		PdfServlet
+  	</servlet-name>
+  	<servlet-class>
+  		org.bandex.PdfServlet
+  	</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>
+  		IndexServlet
+  	</servlet-name>
+  	<url-pattern>
+  		/BandexView/index.html
+  	</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>
+  		HtmlServlet
+  	</servlet-name>
+  	<url-pattern>
+  		/BandexView/cardapio.html
+  	</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>
+  		PdfServlet
+  	</servlet-name>
+  	<url-pattern>
+  		/BandexView/cardapio.pdf
+  	</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
