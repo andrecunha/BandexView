@@ -1,10 +1,11 @@
 package org.bandex;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Scanner;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,12 +32,17 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		OutputStream out = response.getOutputStream();
-		FileInputStream fis;
+		String filename;
 		if (Detector.isMobileBrowser(request))
-			fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main-mobile.html");
+			filename = "/main-mobile.html";
 		else
-			fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main.html");
-		Scanner in = new Scanner(fis);
+			filename = "/main.html";
+		
+		ServletContext context = getServletContext();
+
+		InputStream is = context.getResourceAsStream(filename);
+		
+		Scanner in = new Scanner(is);
 		String line;
 		while(in.hasNextLine()){
 			line = in.nextLine();
