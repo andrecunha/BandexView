@@ -40,7 +40,11 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		OutputStream out = response.getOutputStream();
-		FileInputStream fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main.html");
+		FileInputStream fis;
+		if (isMobileBrowser(request))
+			fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main-mobile.html");
+		else
+			fis = new FileInputStream("/home/andre/workspace/BandexView/WebContent/main.html");
 		Scanner in = new Scanner(fis);
 		String line;
 		while(in.hasNextLine()){

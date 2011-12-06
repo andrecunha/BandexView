@@ -8,6 +8,7 @@ body {
 #title {
 	color: #94B922;
 	text-align: center;
+	font-weight: bold;
 }
 a, a code {
 	color: #006699;

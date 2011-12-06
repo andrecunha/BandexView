@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="styles/main-mobile.css" rel="stylesheet" type="text/css"
+	id="docstyle" />
+<script type="text/javascript">
+	/* TODO: Ver como deixar estática. */
+	choice = {
+		"all" : "true"
+	};
+	loadHTML = function() {
+		window.open("cardapio.html?all=" + choice.all);
+	};
+	loadPDF = function() {
+		window.open("cardapio.pdf?all=" + choice.all);
+	};
+	setAll = function() {
+		choice.all = "true";
+	};
+	unsetAll = function() {
+		choice.all = "false";
+	};
+</script>
+<title>BandexView Mobile</title>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body>
+	<header>
+		<h1>Bem-vindo ao BandexView Mobile.</h1>
+	</header>
+	<div id="selectionArea">
+		<h2>Selecione a forma de visualização:</h2>
+		<p>
+			<button autofocus="autofocus" onclick="loadHTML()">Ver em
+				HTML</button>
+			<button onclick="loadPDF()">Ver em PDF</button>
+		</p>
+		<p>
+			Exibir: <select>
+				<option onclick="setAll()">Tudo</option>
+				<option onclick="unsetAll()">Apenas sobremesa</option>
+			</select>
+		</p>
+	</div>
+	<footer>
+		<p id="credits">Copyright 2011: Isabela Rossales, André Curvello e
+			Andre Cunha</p>
+	</footer>
+</body>
+</html>

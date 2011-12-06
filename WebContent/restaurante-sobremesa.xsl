@@ -55,6 +55,11 @@
 								<span class="en" style="display: inline">Atmosphere</span>
 							</a>
 						</li>
+						<li id="greenZapStyle" onclick="changeStyle(greenZap)">
+							<a ref="index.html">
+								<span class="en" style="display: inline">GreenZap</span>
+							</a>
+						</li>
 					</ul>
 				</header>
 
