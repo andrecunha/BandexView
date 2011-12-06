@@ -43,22 +43,37 @@
 					<ul class="home">
 						<li id="noStyle" onclick="changeStyle(none)">
 							<a ref="index.html">
-								<span class="en" style="display: inline">Sem estilo |</span>
+								<span class="en" style="display: inline">Sem estilo</span>
 							</a>
 						</li>
-						<li id="androidStyle" onclick="changeStyle(android)">
-							<a ref="index.html">
-								<span class="en" style="display: inline"> Android |</span>
+						<li>
+							<a>
+								<span class="en" style="display: inline"> | </span>
 							</a>
 						</li>
-						<li id="atmosphereStyle" onclick="changeStyle(atmosphere)">
+						<li id="androidStyle" onclick="changeStyle(android_mobile)">
 							<a ref="index.html">
-								<span class="en" style="display: inline"> Atmosphere |</span>
+								<span class="en" style="display: inline"> Android</span>
 							</a>
 						</li>
-						<li id="greenZapStyle" onclick="changeStyle(greenZap)">
+						<li>
+							<a>
+								<span class="en" style="display: inline"> | </span>
+							</a>
+						</li>
+						<li id="atmosphereStyle" onclick="changeStyle(atmosphere_mobile)">
 							<a ref="index.html">
-								<span class="en" style="display: inline"> GreenZap</span>
+								<span class="en" style="display: inline"> Atmosphere</span>
+							</a>
+						</li>
+						<li>
+							<a>
+								<span class="en" style="display: inline"> | </span>
+							</a>
+						</li>
+						<li id="greenZapStyle" onclick="changeStyle(greenZap_mobile)">
+							<a ref="index.html">
+								<span class="en" style="display: inline">GreenZap</span>
 							</a>
 						</li>
 					</ul>
