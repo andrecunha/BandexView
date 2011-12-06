@@ -53,8 +53,8 @@ public class HtmlServlet extends HttpServlet {
 			XMLReader reader = parser.getXMLReader();
 			// reader.setErrorHandler(null);
 
-			// reader.parse("http://www.pcasc.usp.br/restaurante.xml");
-			reader.parse("file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
+			reader.parse("http://www.pcasc.usp.br/restaurante.xml");
+			//reader.parse("file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace(out);
@@ -76,12 +76,12 @@ public class HtmlServlet extends HttpServlet {
 			}
 			Transformer transformer = tFactory.newTransformer(XSLSource);
 
-			/*
-			 * StreamSource XMLSource = new StreamSource(
-			 * "http://www.pcasc.usp.br/restaurante.xml");
-			 */
+			
 			StreamSource XMLSource = new StreamSource(
-					"file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
+			  "http://www.pcasc.usp.br/restaurante.xml");
+			 
+			//StreamSource XMLSource = new StreamSource(
+			//		"file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
 
 			StreamResult result = new StreamResult(out);
 

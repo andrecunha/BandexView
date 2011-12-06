@@ -10,7 +10,7 @@
 		<html>
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-				<link href="styles/atmosphere.css" rel="stylesheet" type="text/css"
+				<link href="styles/greenzap.css" rel="stylesheet" type="text/css"
 					id="docstyle" />
 				<title>Cardápio do Bandejão</title>
 				<style type="text/css">html, body {
@@ -53,6 +53,11 @@
 						<li id="atmosphereStyle" onclick="changeStyle(atmosphere)">
 							<a ref="index.html">
 								<span class="en" style="display: inline">Atmosphere</span>
+							</a>
+						</li>
+						<li id="greenZapStyle" onclick="changeStyle(greenZap)">
+							<a ref="index.html">
+								<span class="en" style="display: inline">GreenZap</span>
 							</a>
 						</li>
 					</ul>

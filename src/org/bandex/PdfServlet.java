@@ -42,10 +42,10 @@ public class PdfServlet extends HttpServlet {
 			System.out.println("Preparing...");
 
 			// Setup input and output files
-			// URL xmlfile = new URL("http://www.pcasc.usp.br/restaurante.xml");
-			URL xmlfile = new URL(
+			URL xmlfile = new URL("http://www.pcasc.usp.br/restaurante.xml");
+			/*URL xmlfile = new URL(
 					"file:///home/andre/workspace/BandexView/WebContent/restaurante.xml");
-
+			*/
 			File xsltfile;
 			if (all) {
 				xsltfile = new File(
