@@ -25,8 +25,15 @@ import java.io.PrintWriter;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXParseException;
 
+/**
+ * A simple error handler for SAX, that simply prints out
+ * the errors.
+ */
 public class SimpleErrorHandler implements ErrorHandler {
 	
+	/**
+	 * The PrintWriter where the errors will be printed to.
+	 */
 	private PrintWriter out;
 	
 	public SimpleErrorHandler (PrintWriter out) {

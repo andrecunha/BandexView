@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- restaurante -->
 
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -13,27 +12,6 @@
 				<link href="styles/android.css" rel="stylesheet" type="text/css"
 					id="docstyle" />
 				<title>Cardápio do Bandejão</title>
-				<style type="text/css">html, body {
-					overflow: auto;
-					}
-					#body-content {
-					position: relative;
-					top: 0;
-					}
-					#doc-content {
-					overflow: visible;
-					border-left: 3px solid #666;
-					}
-					#side-nav {
-					padding: 0;
-					}
-					#side-nav
-					.toggle-list ul {
-					display: block;
-					}
-					#resize-packages-nav {
-					border-bottom: 3px solid #666;
-					}</style>
 				<script type="text/javascript" src="changeStyle.js"/>
 			</head>
 			<body>
@@ -149,7 +127,9 @@
 							</xsl:for-each>
 						</div>
 					</div>
-					<div id="spacer"></div>
+					<xsl:if test="name()!='sabado'">
+						<div id="spacer"></div>
+					</xsl:if>
 				</xsl:for-each>
 			</body>
 		</html>

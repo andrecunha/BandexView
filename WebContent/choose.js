@@ -1,7 +1,7 @@
 choice = {
-	"all" : "true"
+	"all" : "true" /* True if user wants to see the whole menu; false
+	if he wants to see only the dessert. */
 };
-a = new Object();
 loadHTML = function() {
 	window.open("cardapio.html?all=" + choice.all);
 };
